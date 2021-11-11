@@ -16,7 +16,10 @@ project "GraphApp"
     files { "**.h*", "**.c*" }
     
 	libdirs { "." }
-    links { "glfw", "freetype", "muparser" }
+    links { "freetype", "muparser" }
 	
+    filter("system:not linux")
+        links { "glfw3" }
+
 	filter "system:linux"
-		links { "dl" }
+		links { "dl", "glfw" }
