@@ -19,5 +19,6 @@ In order to build the repository, you will require [GNU Make](https://www.gnu.or
 
 ```
 premake5 gmake
-make GraphApp
+make GraphApp config=Release
+./GraphApp
 ```
