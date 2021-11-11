@@ -1,13 +1,20 @@
 workspace "Graph"
     configurations { "Debug", "Release" }
 
+    filter "configurations:Debug"
+        defines { "GRAPH_DEBUG" }
+        -- symbols "on"
+
+    filter "configurations:Release"
+        optimize "on"
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}"
 
 project "GraphApp"
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++17"
-    warnings "Off"
+    warnings "off"
 
     targetdir ("bin/" .. outputdir)
     objdir ("bin-int/" .. outputdir)
@@ -18,7 +25,7 @@ project "GraphApp"
 	libdirs { "." }
     links { "freetype", "muparser" }
 	
-    filter("system:not linux")
+    filter "system:not linux"
         links { "glfw3" }
 
 	filter "system:linux"
