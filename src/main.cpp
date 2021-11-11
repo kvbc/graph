@@ -64,7 +64,7 @@ void process_input(GLFWwindow *window)
 }
 
 #pragma region Graph_Main
-int main (int argc, char **argv)
+int main ()
 {
     /*
      *
@@ -222,12 +222,6 @@ int main (int argc, char **argv)
     float color_function [3] = {1.0f, 1.0f, 1.0f};          // white
     float color_glyph    [4] = {0.0f, 1.0f, 0.0f, 1.0f};    // green
 
-    bool debug_mode = false;
-    if(argc > 1)
-    {
-        debug_mode = (strcmp(argv[1], "debug") == 0);
-    }
-
     /*
      *
      * Initalizing scene data
@@ -315,14 +309,13 @@ int main (int argc, char **argv)
          *
          */
 
-        if(debug_mode)
-        {
-            ImGui::Begin("Debug");
-            ClassManager::ImGui_printClassData(graph);
-            ImGui::Text(("Average " + str_ms + " ms/frame (" + str_fps + " FPS)").c_str());
-            ImGui::Text(("Time elapsed: " + std::to_string(glfwGetTime() - startTime) + 's').c_str());
-            ImGui::End();
-        }
+#ifdef GRAPH_DEBUG
+        ImGui::Begin("Debug");
+        ClassManager::ImGui_printClassData(graph);
+        ImGui::Text(("Average " + str_ms + " ms/frame (" + str_fps + " FPS)").c_str());
+        ImGui::Text(("Time elapsed: " + std::to_string(glfwGetTime() - startTime) + 's').c_str());
+        ImGui::End();
+#endif
 
         /*
          *
