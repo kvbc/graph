@@ -6,7 +6,7 @@ Mathematical function graph renderer
 
 That's quite unprofessional of me to say, but sorry if it doesn't build correctly (if at all).  
 I'm quite new to premake and in general making the build process easier.  
-As a side note, it works flawlessly on Windows and Ubuntu.
+It works flawlessly on Windows and Ubuntu.
 
 # Prerequisites
 
